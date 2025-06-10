@@ -22,10 +22,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         
-      # Step 2: Install jq (required for JSON parsing)
-      - name: Install jq
+      # Step 2: Install required packages
+      - name: Install jq and Python
         run: |
-          apt-get update && apt-get install -y jq
+          apk add --no-cache jq python3 py3-pip
         
       - name: Check for recent successful runs
         id: check-results
@@ -95,7 +95,7 @@ jobs:
       - name: Install dependencies
         if: steps.check-results.outputs.workflow_status == 'success'
         run: | 
-          uv pip install --system requests uuid
+          pip3 install requests uuid
 
       - name: Generate secret code
         id: generate-code
