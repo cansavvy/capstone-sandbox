@@ -1,0 +1,14 @@
+
+name: GitHub Action
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  job-name: # CALL THE JOB SOMETHING
+    runs-on: ubuntu-latest
+
+    steps:
+     - uses: actions/checkout@v3
+     - uses: actions/setup-python@v4
